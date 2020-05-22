@@ -10,7 +10,20 @@ const skills = [
 
 module.exports = {
     getAll,
-    getOne
+    getOne,
+    create,
+    deleteOne
+};
+
+function deleteOne(id) {
+    const idx = skills.findIndex(skill => skill.id === id);
+    skills.splice(idx, 1);
+};
+
+function create(skill) {
+    skill.id = Date.now() % 100000;
+    skill.learned = false;
+    skills.push(skill);
 };
 
 function getAll() {
